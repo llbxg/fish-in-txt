@@ -8,6 +8,8 @@ const fs = require("fs");
 let currentPath = '';
 let currentFile = '';
 
+let savedata = '';
+
 //right
 document.getElementById('close').addEventListener('click',closeWindow);
 document.getElementById('minimize').addEventListener('click',minimizeWindow);
@@ -19,7 +21,35 @@ document.getElementById('save').addEventListener('click',saveFile);
 
 function closeWindow(){
     var window = remote.getCurrentWindow()
-    window.close()
+    if (savedata != getData()){
+      dialog.showMessageBox(
+        window, 
+        {
+          title: ' U dont save this file',
+          type: 'info',
+          buttons: ['save','dont save' ,'Cancel'],
+          detail: 'Do you want to save your changes?'
+        })
+        .then(result => {
+          if (result.response === 0) {
+              saveFile().then( () =>
+                {
+                  window.close()
+                }
+              );
+          }else if(result.response === 1){
+            window.close()
+          }else{
+          }
+        }
+      );
+    }else{
+      window.close()
+    }
+
+    
+
+    
 }
 
 function minimizeWindow(){
@@ -68,6 +98,7 @@ function readFile(path){
         updateValue()
         currentPath = path;
         title_name = get_extension(currentFile);
+        savedata=getData();
     });
     
 }
@@ -98,6 +129,8 @@ function saveFile() {
   }
 
 function writeFile(path, data) {
+  savedata = data;
+  console.log(savedata)
   fs.writeFile(path, data, error => {
     if (error != null) {
       alert("error : " + error);
