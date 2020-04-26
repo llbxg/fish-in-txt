@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/theme.css"> 
+    <link rel="stylesheet" href="css/main.css"> 
+    <link rel="icon" href="build/icon.ico"> 
+    <title>Sakana in txt</title>
+</head>
+
+<body>
+<header>
+    <div class="option" id="close">x</div>
+    <div class="option" id="maximize">□</div>
+    <div class="option" id="minimize">-</div>
+    <div class="hidden_box">
+        <input type="checkbox" id="cb1">
+        <label class="overlay" for="cb1"></label>
+        <label class="option" for="cb1">%</label>
+        <div class="hidden_show">
+            <div class="tab" id="load">load</div>
+            <div class="tab" id="save">save</div>
+        </div>
+    </div>
+</header>
+      
+<div class="content">   
+    <div class="side"><ul id="output"></ul></div>
+    <div class="sen"><div class="kaku"></div></div>
+    <div class="main" contenteditable="true" id="input"><p>#</p></div>
+</div>
+
+<script src="js/doc.js"></script>
+<script src="js/script.js"></script>
+</body>
+
+</html>

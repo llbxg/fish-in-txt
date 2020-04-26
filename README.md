@@ -10,8 +10,6 @@ fish-in-txtはシンプルなテキストエディタです。
 
 ## run & install
 
-***
-
 以下の手順で簡単にビルドできます。  
 
 ```bash
@@ -23,14 +21,10 @@ nmp start
 
 ## 特徴
 
-***
-
 * このアプリケーションはelectronを使用して作成されています。  
 * 外部JSファイルを使用せずにエディタを作成しています。
 
 ## Yesterday
-
-***
 
 * "#"を用いて主題と副題を設定できます。
 * 自動で主題と副題を取得して、indexを作成します。
@@ -38,14 +32,10 @@ nmp start
 
 ## Tomorrow
 
-***
-
 * ショートカット
 * indexクリック時のジャンプをスムーススクロールに対応
 * 未保存状態でwindowを閉じた場合の確認画面
 
 ## Sono他
-
-***
 
 * See the License file for [license](LICENSE) rights and limitations (MIT)

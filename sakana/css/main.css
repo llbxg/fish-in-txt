@@ -1,0 +1,198 @@
+@font-face {
+	font-family: 'HackGen';
+	src: url(HackGen35Console-Regular.ttf);
+}
+
+::-webkit-scrollbar {
+    display:none;
+}
+
+::selection {
+    background-color: var(--ttc);
+    color: var(--bgc);
+}
+
+html, body { height: 100%; }
+
+body{
+    display: flex;
+    flex-direction: column;
+    font-family: HackGen, monospace;
+    font-size: var(--fsz);
+    margin: 0;
+    background-color: var(--bgc);
+}
+
+header{
+    z-index: 10;
+    position: fixed;
+    display: flex;
+    flex-direction: row-reverse;
+
+    width: 100%;
+    height: 30px;
+
+    -webkit-app-region:drag;
+}
+
+
+ul{
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    list-style-type: none;
+    padding: .2em 0;
+  }
+
+a{
+    text-decoration: none;
+    color: var(--ttc);
+}
+p{
+    margin: 2px 0px;
+}
+
+.side_sub a{
+    padding-left: 1em;
+    color: var(--sttc);
+}
+
+
+.content {
+    display: flex;
+    position: relative;
+    height: 100%;
+}
+
+
+.side {
+    position: sticky;
+    width: 199px;
+    top: 0px;
+    color: var(--ttc);
+    height: calc(100%-30px);
+    background: var(--bgc);
+    overflow: scroll;
+    padding-top: 30px;
+    padding-left: 2em;
+}
+
+.sen {
+    display: flex;
+    align-items: center;
+}
+
+.kaku{
+    width: 1px;
+    height: 90%;
+    border-left: solid 1px var(--ttc); 
+}
+
+.hash1 {
+    margin-left: -1em;
+    margin-top: 1em;
+    margin-bottom: .5em;
+}
+
+.hash2 {
+    margin-left: -.5em;
+    margin-top: .5em;
+    margin-bottom: .3em;
+}
+  
+.main {
+    outline: none;
+    flex: 1 0 auto;
+    background: var(--bgc);
+    color: var(--ttc);
+    height: calc(100%-30px);
+    width: 60%;
+    overflow: scroll;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 30px;
+  }
+
+.option{
+    display: inline-block;
+    text-align:center;
+    margin-top:10px;
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    border-radius: 50%;
+    color: var(--ttc);
+    background-color: var(--bgc);
+    -webkit-app-region:no-drag;
+    cursor:pointer;
+    user-select: none;
+}
+
+.option:hover{
+    background-color: var(--ttc);
+    color: var(--bgc);
+}
+
+.hidden_box{
+    padding: 0;
+    margin-right: auto;
+    margin-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    -webkit-app-region:no-drag;
+}
+
+.hidden_box input {
+    display: none;
+}
+
+.hidden_box .hidden_show {
+    height: 0;
+    padding: 0;
+    padding-top: 10px;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.9s;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.hidden_box input:checked ~ .hidden_show {
+    height: auto;
+    opacity: 1;
+}
+
+.tab {
+    padding-left: .5em;
+    z-index: 15;
+    width: 50px;
+    height: 15px;
+    color: var(--ttc);
+    background-color: var(--bgc);
+    -webkit-app-region:no-drag;
+
+    cursor:pointer;
+}
+
+.tab:hover{
+    text-decoration: underline;
+}
+
+.overlay{
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index:-1;
+}
+
+.hidden_box input:checked ~.overlay {
+    pointer-events: auto;
+}
