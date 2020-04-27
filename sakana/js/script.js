@@ -5,10 +5,11 @@ const dialog = require('electron').remote.dialog;
 
 const fs = require("fs");
 
-let currentPath = '';
 let currentFile = '';
 
 let savedata = '';
+
+let title_name = 'new.txt';//txt name
 
 //right
 document.getElementById('close').addEventListener('click',closeWindow);
@@ -43,13 +44,7 @@ function closeWindow(){
           }
         }
       );
-    }else{
-      window.close()
     }
-
-    
-
-    
 }
 
 function minimizeWindow(){
@@ -75,36 +70,39 @@ function fileOpen(){
     };
     
     dialog.showOpenDialog(options)
-    .then(({ filePaths: fileNames }) => {
-      if (fileNames) {
-        currentFile = fileNames[0]
-        readFile(currentFile);
-      }});
+    .then(({ filePaths: fileNames , canceled : cancel_bool}) => {
+      if (!cancel_bool){
+        if (fileNames) {
+        currentFile = fileNames[0];
+        
+        readFile(currentFile);}
+      }
+      });
 }
 
 function readFile(path){
     fs.readFile(path, (error, text) => {
+        title_name = get_extension(currentFile);
         if(error!=null){
             alert("error : " + error);
             return;
         }
         let txt = text.toString();
         let txt_list = txt.split(/\n/);
-        let load_file ="";
+        let load_file ='<p><a id="_0">'+"#"+title_name+'</a></p>';
         for(let i = 0; i<txt_list.length;i++){
             load_file += "<p>"+txt_list[i]+"</p>"
         }
         document.getElementById("input").innerHTML = load_file;
+
         updateValue()
-        currentPath = path;
-        title_name = get_extension(currentFile);
         savedata=getData();
     });
     
 }
 
 function saveFile() {
-    if (currentPath === '') {
+    if (currentFile === '') {
         saveNewFile();
         return;
     }
@@ -120,8 +118,11 @@ function saveFile() {
       })
       .then(result => {
         if (result.response === 0) {
-            let data = getData();
-            writeFile(currentPath, data);
+            let data = getData2();
+            title_name = get_extension(currentFile);
+            writeFile(currentFile, data);
+            updateValue()
+            savedata=getData();
         }
       }
     );
@@ -130,7 +131,8 @@ function saveFile() {
 
 function writeFile(path, data) {
   savedata = data;
-  console.log(savedata)
+  
+  
   fs.writeFile(path, data, error => {
     if (error != null) {
       alert("error : " + error);
@@ -144,6 +146,7 @@ function saveNewFile() {
   dialog.showSaveDialog(
     window,
     {
+      defaultPath:'new',
       properties: ['openFile'],
       title: 'Create a text file',
       filters: [
@@ -153,10 +156,12 @@ function saveNewFile() {
     })
     .then(({ filePath: fileName }) => {
       if (fileName) {
-            let data = getData();
-            currentPath = fileName;
+            let data = getData2();
+            currentFile = fileName;
             title_name = get_extension(currentFile);
-            writeFile(currentPath, data);
+            writeFile(currentFile, data);
+            updateValue()
+            savedata=getData();
       }
     });
 }
@@ -170,12 +175,19 @@ function getData(){
     return save_text;
 }
 
-function get_extension(path) {
-  var basename = path.split(/[\\/]/).pop(), 
-                                             
-      pos = basename.lastIndexOf('.');      
+function getData2(){
+    var text = document.getElementById("input").getElementsByTagName("a")
+    var save_text =""
+    for(var i=1; i<text.length; i++ ){
+        save_text += text[i].innerHTML +  '\n'
+    }
+    return save_text;
+}
 
-  if (basename === '' || pos < 1)            
-      return "";                            
-  return basename.slice(pos + 1);            
+function get_extension(path) {
+  var basename = path.split(/[\\/]/).pop()
+  if (basename === ''){
+    return "";        
+  }             
+  return basename;        
 }

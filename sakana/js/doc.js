@@ -5,20 +5,21 @@ const input = document.getElementById("input");
 input.addEventListener('input', updateValue);
 
 function updateValue() {
-    let title_name = "fish in txt"
     var inp = document.getElementById("input");
     var oup = document.getElementById('output');
 
-    var ouptxt = ' ';
-
-    var hc = inp.getElementsByTagName("p");
-
-    let dc = inp.getElementsByTagName("div")
-
-    if (hc.length == 0 & dc.length==0 & inp.innerHTML!=''){
-        inp.innerHTML = '<p id="fst">'+inp.innerHTML+'</p>';
+    var fi = document.getElementById("_0");
+    if (fi==null){
+        console.log(inp)
+        console.log(inp.innerHTML)
+        inp.innerHTML = '<p><a id="_0">'+"#"+title_name+'</a></p>';
+    }else{
+        fi.innerHTML = "#"+title_name;
     }
+
+    var ouptxt = '';
     
+    var hc = inp.getElementsByTagName("p");
     hc = Array.prototype.slice.call(hc);
 
     for ( var i = 0; i < hc.length; i++ ) {
@@ -55,9 +56,6 @@ function updateValue() {
 
     }
 
-    oup.innerHTML = ouptxt;
-
-    var text = document.getElementsByTagName("title")[0]
-    text.innerHTML = title_name
+    oup.innerHTML = ouptxt;    
 
 }
