@@ -30,6 +30,9 @@ function createWindow() {
         mainWindow = null;
     });
 
+    console.log(path)
+    console.log(app.getPath('exe'))
+
 }
 
 app.on('ready', createWindow);

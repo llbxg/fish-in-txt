@@ -33,20 +33,20 @@ function closeWindow(){
         })
         .then(result => {
           if (result.response === 0) {
-              saveFile().then( () =>
-                {
-                  window.close()
-                }
-              );
+              saveFile()
+              
           }else if(result.response === 1){
             window.close()
           }else{
           }
         }
+        
       );
+
     }else{
       window.close()
     }
+
 }
 
 function minimizeWindow(){
@@ -99,6 +99,7 @@ function readFile(path){
 
         updateValue()
         savedata=getData();
+
     });
     
 }
@@ -128,6 +129,7 @@ function saveFile() {
         }
       }
     );
+    return;
 
   }
 
