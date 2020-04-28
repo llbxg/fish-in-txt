@@ -84,7 +84,7 @@ function fileOpen(){
 
 function readFile(path){
     fs.readFile(path, (error, text) => {
-        title_name = get_extension(currentFile);
+        title_name = get_extension(path);
         if(error!=null){
             alert("error : " + error);
             return;
