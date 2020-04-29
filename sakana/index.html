@@ -40,6 +40,12 @@
 <script src="js/drug.js"></script>
 <script src="js/open.js"></script>
 
+<script>
+const ipc = require('electron').ipcRenderer;
+ipc.on('path', (event, message) => {
+    console.log(message)
+});
+</script>
 
 </body>
 
