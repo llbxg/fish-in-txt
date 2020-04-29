@@ -1,8 +1,10 @@
 var argv = remote.process.argv;
 
-if(argv.length != 1 && currentFile !="."){
+if(argv.length >= 2){
     currentFile = argv[1]
-    readFile(currentFile);
+    if(currentFile !="."){
+        readFile(currentFile);
     updateValue();
     savedata=getData();
+    }
 }
