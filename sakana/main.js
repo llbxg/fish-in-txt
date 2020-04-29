@@ -52,9 +52,10 @@ function createWindow() {
         }else{
             content = {
                 window_size:{
-                    width : w,
-                    height: h
-                }
+                    "width" : w,
+                    "height": h
+                },
+                font_size:"15px"
             }
             writeFile(config_path,JSON.stringify(content,null,'  '));
         }
@@ -66,7 +67,7 @@ function createWindow() {
 
 
     mainWindow.webContents.on('did-finish-load', () => {
-        mainWindow.webContents.send('path', 'hello')
+        mainWindow.webContents.send('path', app.getPath('userData'))
     });
 }
 
