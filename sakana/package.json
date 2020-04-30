@@ -1,6 +1,6 @@
 {
   "name": "fishintxt",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "simple text editor",
   "main": "main.js",
   "scripts": {
