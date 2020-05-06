@@ -111,9 +111,7 @@ p{
     height: calc(100%-30px);
     width: 60%;
     overflow: scroll;
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 30px;
+    padding: 30px 10% 40px;
   }
 
 .option{
