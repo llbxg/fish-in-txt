@@ -26,7 +26,7 @@ nmp start
 
 ## 詳しく
 
-[using editor](https://www.kosh.dev/fish/)
+[fish-in-txt | kosh.dev](https://www.kosh.dev/fish/)
 
 ## Sono他
 
