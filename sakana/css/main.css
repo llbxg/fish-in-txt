@@ -76,8 +76,7 @@ p{
     height: calc(100%-30px);
     background: var(--bgc);
     overflow: scroll;
-    padding-top: 30px;
-    padding-left: 2em;
+    padding: 30px 2em 40px;
 }
 
 .sen {
