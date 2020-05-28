@@ -26,8 +26,6 @@ nmp start
 
 ## 詳しく
 
-[fish-in-txt | kosh.dev](https://www.kosh.dev/fish/)
-
 ## Sono他
 
 * See the License file for [license](LICENSE) rights and limitations (MIT)
